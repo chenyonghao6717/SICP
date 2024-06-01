@@ -16,20 +16,25 @@ def write(lines: List[str], path):
     file.writelines(lines)
 
 def import_lib_in_file(path: str):
+  if IMPORTED_FILE_SUFFIX in path:
+    return
   output_lines: List[str] = []
   with open(path) as file:
     lines = file.readlines()
+  has_import = False
   for line in lines:
     if not line.startswith(';') or not 'import' in line:
       output_lines.append(line)
       continue
-    lib_file_path = os.path.join('lib', line.replace(';', '').replace('import', '').replace(' ', ''))
+    has_import = True
+    lib_file_path = line.replace(';', '').replace('import', '').replace(' ', '').replace('\n', '')
     with open(lib_file_path, 'r') as lib:
       lib_lines = lib.readlines()
-      lines.append(IMPORT_START)
-      lines.extend(lib_lines)
-      lines.append(IMPORT_END)
-  write(output_lines, path.replace('.scm', IMPORTED_FILE_SUFFIX))
+      output_lines.append(IMPORT_START)
+      output_lines.extend(lib_lines)
+      output_lines.append(IMPORT_END)
+  if has_import:
+    write(output_lines, path.replace('.scm', IMPORTED_FILE_SUFFIX))
 
 def import_lib(path):
   files = os.listdir(path)
