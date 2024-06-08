@@ -6,8 +6,8 @@
 
 (define (add-interval x y)
   (make-interval 
-    (+ (lower-interval x) (lower-interval y))
-    (+ (upper-interval x) (upper-interval y))))
+    (+ (lower-bound x) (lower-bound y))
+    (+ (upper-bound x) (upper-bound y))))
 
 (define (mul-interval x y)
   (let ((p1 (* (lower-bound x) (lower-bound y)))
