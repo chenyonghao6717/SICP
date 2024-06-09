@@ -15,28 +15,38 @@ def write(lines: List[str], path):
   with open(path, 'w') as file:
     file.writelines(lines)
 
-def import_lib_in_file(path: str):
-  if IMPORTED_FILE_SUFFIX in path:
-    return
+def read_all_import_codes(path: str, imported: List[str]) -> List[str]:
+  if path in imported:
+    return []
   output_lines: List[str] = []
-  with open(path) as file:
-    lines = file.readlines()
-  has_import = False
+  with open(path, "r") as f:
+    lines = f.readlines()
   for line in lines:
     if not line.startswith(';') or not 'import' in line:
       output_lines.append(line)
       continue
-    has_import = True
     lib_file_path = line.replace(';', '').replace('import', '').replace(' ', '').replace('\n', '')
-    with open(lib_file_path, 'r') as lib:
-      lib_lines = lib.readlines()
-      output_lines.append(IMPORT_START)
-      output_lines.extend(lib_lines)
-      output_lines.append(IMPORT_END)
-  if has_import:
-    write(output_lines, path.replace('.scm', IMPORTED_FILE_SUFFIX))
+    output_lines.extend(read_all_import_codes(lib_file_path, imported))
+    imported.append(lib_file_path)
+  return output_lines
 
-def import_lib(path):
+def import_lib_in_file(path: str):
+  if IMPORTED_FILE_SUFFIX in path:
+    return
+  with open(path, "r") as f:
+    file_lines = f.readlines()
+  has_import = False
+  for file_line in file_lines:
+    if file_line.startswith(";") and "import" in file_line:
+      has_import = True
+      break
+  if not has_import:
+    return
+  output_lines = read_all_import_codes(path, [])
+  with open(path.replace('.scm', IMPORTED_FILE_SUFFIX), "w") as file:
+    file.writelines(output_lines)
+
+def import_lib(path: str):
   files = os.listdir(path)
   for file in files:
     file_path = os.path.join(path, file)
