@@ -1,0 +1,16 @@
+(define (same-parity . items)
+  (let ((first_remainder (remainder (car items) 2)))
+    (define (condition-append item list_)
+      (if (= first_remainder (remainder item 2))
+          (cons item list_)
+          list_))
+    (define (same-parity-help items)
+      (if (null? items)
+          items
+          (condition-append (car items) (same-parity-help (cdr items)))))
+    (same-parity-help items)))
+
+(display (same-parity 1 3 5 7))
+(newline)
+(display (same-parity 2 4 6 1 3 5))
+(newline)
