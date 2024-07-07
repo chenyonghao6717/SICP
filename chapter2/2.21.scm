@@ -1,4 +1,4 @@
-; import lib/common-math.scm
+; import lib/math.scm
 
 (define (square-list items)
   (if (null? items)

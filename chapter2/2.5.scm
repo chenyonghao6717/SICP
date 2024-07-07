@@ -1,4 +1,4 @@
-; import lib/common-math.scm
+; import lib/math.scm
 
 (define (cons a b)
   (* (power 2 a) (power 3 b)))

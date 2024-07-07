@@ -1,4 +1,4 @@
-; import lib/common-math.scm
+; import lib/math.scm
 
 (define (square-list-1 items)
   (define (iter things answer)
