@@ -24,3 +24,6 @@
       '()
       (cons (accumulate op init (fetch-firsts seqs))
             (accumulate-n op init (fetch-rests seqs)))))
+
+(define (flatmap proc seq)
+  (accumulate append nil (map proc seq)))
