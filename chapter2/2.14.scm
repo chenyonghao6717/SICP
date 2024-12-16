@@ -1,4 +1,4 @@
-; import chapter2/2.7.scm
+; import chapter2/2.07.scm
 
 (define (par1 r1 r2)
   (div-interval (mul-interval r1 r2)

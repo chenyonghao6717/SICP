@@ -1,4 +1,4 @@
-; import chapter2/2.7.scm
+; import chapter2/2.07.scm
 
 (define (new-div-interval interval1 interval2)
   (let ((product-of-interval2 (* (lower-bound interval2) (upper-bound interval2))))
