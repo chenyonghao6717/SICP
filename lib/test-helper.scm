@@ -1,0 +1,11 @@
+(define 
+  (assert-equal expected actual)
+  (if (equal? expected actual)
+      (display "ok\n")
+      (begin (display "FAIL: expected ")
+             (write expected)
+             (display ", got ")
+             (write actual)
+             (newline))
+  )
+)
