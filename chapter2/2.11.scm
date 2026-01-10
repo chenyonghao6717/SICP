@@ -1,4 +1,4 @@
-; import chapter2/2.7.scm
+; import chapter2/2.07.scm
 
 (define (mul-interval x y)
   (let ((x1 (lower-bound x))

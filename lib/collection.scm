@@ -24,3 +24,14 @@
       '()
       (cons (accumulate op init (fetch-firsts seqs))
             (accumulate-n op init (fetch-rests seqs)))))
+
+(define (flatmap proc seq)
+  (accumulate append '() (map proc seq)))
+
+; generate a list of integers between m and n(inclusively)
+(define (enumerate m n)
+  (define (iter i)
+    (if (> i n)
+        '()
+        (cons i (iter (+ i 1)))))
+  (iter m))
