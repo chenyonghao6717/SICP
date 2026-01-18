@@ -23,3 +23,16 @@
     (and (= (car t1) (car t2)) (pair-comparator (cdr t1) (cdr t2)))
   )
 )
+
+(define (list-comparator l1 l2)
+  (if (null? l1)
+      #t
+      (or
+        (< (car l1) (car l2))
+        (and
+          (= (car l1) (car l2))
+          (list-comparator (cdr l1) (cdr l2))
+        )
+      )
+  )
+)
