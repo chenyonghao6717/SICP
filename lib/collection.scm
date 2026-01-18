@@ -29,15 +29,9 @@
   (accumulate append '() (map proc seq)))
 
 ; generate a list of integers between m and n(inclusively)
-(define (enumerate m n)
+(define (enumerate-interval m n)
   (define (iter i)
     (if (> i n)
         '()
         (cons i (iter (+ i 1)))))
   (iter m))
-
-(define (make-interval a b) (cons a b))
-
-(define (upper-bound interval) (cdr interval))
-
-(define (lower-bound interval) (car interval))

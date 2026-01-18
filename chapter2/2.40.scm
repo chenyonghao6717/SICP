@@ -6,7 +6,7 @@
       '()
       (flatmap
         (lambda (i)
-          (map (lambda (j) (list j i)) (enumerate 1 (- i 1))))
-        (enumerate 2 n))))
+          (map (lambda (j) (list j i)) (enumerate-interval 1 (- i 1))))
+        (enumerate-interval 2 n))))
 
 (assert-equal '((1 2) (1 3) (2 3)) (unique-pairs 3))

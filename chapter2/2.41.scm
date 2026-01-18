@@ -7,7 +7,7 @@
   (define (gen-triples pair)
     (map 
       (lambda (i) (cons i pair))
-      (enumerate 1 (- s (sum pair)))
+      (enumerate-interval 1 (- s (sum pair)))
     )
   )
 
@@ -31,13 +31,13 @@
   (define (gen-pairs k)
     (map
       (lambda (j) (list j k))
-      (enumerate 2 (- k 1))
+      (enumerate-interval 2 (- k 1))
     )
   )
 
   (let* 
     (
-      (pairs (flatmap gen-pairs (enumerate 3 n)))
+      (pairs (flatmap gen-pairs (enumerat-interval 3 n)))
       (triples (flatmap gen-triples pairs))
     )
     (filter valid? triples)
