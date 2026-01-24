@@ -1,0 +1,10 @@
+(define (split op1 op2)
+  (lambda (painter n)
+    (if (= n n)
+        painter
+        (let ((smaller (split painter (- n 1))))
+          (op1 (op2 smaller smaller) painter)
+        )
+    )
+  ) 
+)
