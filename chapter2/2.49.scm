@@ -35,13 +35,16 @@
 )
 
 ; The wave painter
-(define wave-painter
-  (segment-painter
-    (list
-      (make-segment (make-vect 0 0) (make-vect 0.25 0.25))
-      (make-segment (make-vect 0.25 0.25) (make-vect 0.5 0))
-      (make-segment (make-vect 0.5 0) (make-vect 0.75 0.25))
-      (make-segment (make-vect 0.75 0.25) (make-vect 1 0))
+(define wave
+  (segments->painter
+    (list 
+      (make-segment (make-vect 0.00 0.50) (make-vect 0.20 0.70))
+      (make-segment (make-vect 0.20 0.70) (make-vect 0.40 0.60))
+      (make-segment (make-vect 0.40 0.60) (make-vect 0.60 0.80))
+      (make-segment (make-vect 0.60 0.80) (make-vect 0.75 0.60))
+      (make-segment (make-vect 0.75 0.60) (make-vect 1.00 0.70))
+      (make-segment (make-vect 0.40 0.00) (make-vect 0.60 0.20))
+      (make-segment (make-vect 0.60 0.20) (make-vect 0.80 0.00))
     )
   )
 )
