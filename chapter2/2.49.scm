@@ -34,7 +34,7 @@
   )
 )
 
-; The wave painter
+; The wave painter(where wave is the human-like character in the book rather than the pyhsical wave)
 (define wave
   (segments->painter
     (list 
