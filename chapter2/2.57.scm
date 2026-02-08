@@ -49,7 +49,6 @@
             )
           )
         )
-        ;(else (error "unknow expression type: DERIV" exp))
-        (else (display exp))
+        (else (error "unknow expression type: DERIV" exp))
   )
 )
