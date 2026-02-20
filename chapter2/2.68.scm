@@ -56,6 +56,10 @@
       (append (encode-symbol (car message) tree)
               (encode (cdr message) tree))))
 
+(display "=========================")
+(newline)
+(display "2.68")
+(newline)
 (assert-equal
   '(0 1 0 1 1 1 1 1 0)
   (encode '(A B C D) sample-tree))

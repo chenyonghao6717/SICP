@@ -21,7 +21,7 @@
 
 (define (adjoin-set x set)
   (cond ((null? set) (list x))
-        ((< (weight x) (weight (car set))) (cons x set))
+        ((> (weight x) (weight (car set))) (cons x set))
         (else (cons (car set)
                     (adjoin-set x (cdr set))))))
 
@@ -46,4 +46,9 @@
 (define (generate-huffman-tree pairs)
   (successive-merge (make-leaf-set pairs)))
 
+(display "========================")
+(newline)
+(display "2.69")
+(newline)
 (display (generate-huffman-tree '((A 4) (B 2) (C 1) (D 1))))
+(newline)
